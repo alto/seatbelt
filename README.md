@@ -56,7 +56,7 @@ class MyTest < Test::Unit::TestCase
 
   def test_with_block
     assert_mail :to => 'recipient@email.com', :subject => 'the subject' do
-      assert_mail :to => 'another@email.com', :subject => 'used as regular expression'
+      assert_mail :to => 'another@email.com', :subject => 'used as regular expression' do
         this_sends_two_emails
       end
     end
