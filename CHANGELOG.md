@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.0.1 (not yet released)
+## 0.0.1
 
   * include assert_mail
   * include assert_json
