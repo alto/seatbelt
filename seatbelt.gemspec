@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.version       = Seatbelt::VERSION
 
   gem.add_dependency 'multi_json'
+  gem.add_development_dependency 'rake'
   gem.add_development_dependency 'activesupport'
   gem.add_development_dependency 'actionmailer'
   gem.add_development_dependency 'travis-lint'
