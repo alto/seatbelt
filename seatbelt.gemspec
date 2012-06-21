@@ -4,9 +4,9 @@ require File.expand_path('../lib/seatbelt/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Thorsten Böttger"]
   gem.email         = ["boettger@mt7.de"]
-  gem.description   = %q{Provide custom assertions for Ruby and Ruby on Rails}
   gem.summary       = %q{Provide custom assertions for Ruby and Ruby on Rails}
-  gem.homepage      = "http://github.com/also/seatbelt"
+  gem.description   = %q{Goal is to provide custom, high quality and high level assertions for Ruby and Ruby on Rails}
+  gem.homepage      = "http://github.com/alto/seatbelt"
   gem.licenses      = ["MIT"]
 
   gem.files         = `git ls-files`.split($\)
