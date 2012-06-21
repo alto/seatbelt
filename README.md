@@ -1,4 +1,4 @@
-# Seatbelt
+# Seatbelt [![Build Status](https://secure.travis-ci.org/alto/seatbelt.png)](http://travis-ci.org/alto/seatbelt)
 
 Provide a number of custom assertions for Ruby and Ruby on Rails
 
