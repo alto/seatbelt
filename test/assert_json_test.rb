@@ -9,7 +9,7 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
   #   end
   # end
   # def test_string_crosscheck
-  #   assert_raises(MiniTest::Assertion) do
+  #   assert_assertion_fails do
   #     assert_json '"key"' do
   #       has 'wrong_key'
   #     end
@@ -38,14 +38,14 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_single_hash_crosscheck_for_key
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":"value"}' do
         has 'wrong_key', 'value'
       end
     end
   end
   def test_single_hash_crosscheck_for_value
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":"value"}' do
         has 'key', 'wrong_value'
       end
@@ -59,7 +59,7 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_has_not_crosscheck
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":"value"}' do
         has_not 'key'
       end
@@ -81,21 +81,21 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_array_crosscheck_order
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '["value1","value2","value3"]' do
         has 'value2'
       end
     end
   end
   def test_array_crosscheck_for_first_item
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '["value1","value2","value3"]' do
         has 'wrong_value1'
       end
     end
   end
   def test_array_crosscheck_for_second_item
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '["value1","value2","value3"]' do
         has 'value1'
         has 'wrong_value2'
@@ -109,12 +109,12 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_nested_arrays_crosscheck
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '[[["deep","another_depp"],["second_deep"]]]' do
         has [["deep","wrong_another_depp"],["second_deep"]]
       end
     end
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '[[["deep","another_depp"],["second_deep"]]]' do
         has [["deep","another_depp"],["wrong_second_deep"]]
       end
@@ -127,21 +127,21 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_hash_with_value_array_crosscheck_wrong_key
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":["value1","value2"]}' do
         has 'wrong_key', ['value1', 'value2']
       end
     end
   end
   def test_hash_with_value_array_crosscheck_wrong_value1
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":["value1","value2"]}' do
         has 'key', ['wrong_value1', 'value2']
       end
     end
   end
   def test_hash_with_value_array_crosscheck_wrong_value2
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":["value1","value2"]}' do
         has 'key', ['value1', 'wrong_value2']
       end
@@ -157,7 +157,7 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_hash_with_array_of_hashes_crosscheck_inner_key
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":[{"inner_key1":"value1"},{"inner_key2":"value2"}]}' do
         has 'key' do
           has 'wrong_inner_key1', 'value1'
@@ -166,7 +166,7 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_hash_with_array_of_hashes_crosscheck_inner_value
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":[{"inner_key1":"value1"},{"inner_key2":"value2"}]}' do
         has 'key' do
           has 'inner_key1', 'wrong_value1'
@@ -189,13 +189,13 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_array_with_two_hashes_crosscheck
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '[{"key1":"value1"}, {"key2":"value2"}]' do
         has 'wrong_key1', 'value1'
         has 'key2', 'value2'
       end
     end
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '[{"key1":"value1"}, {"key2":"value2"}]' do
         has 'key1', 'value1'
         has 'key2', 'wrong_value2'
@@ -213,12 +213,12 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
     end
   end
   def test_nested_hashes_crosscheck
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"outer_key":{"key":{"inner_key":"value"}}}' do
         has 'wrong_outer_key'
       end
     end
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"outer_key":{"key":{"inner_key":"value"}}}' do
         has 'outer_key' do
           has 'key' do
@@ -250,7 +250,7 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
   end
 
   def test_not_enough_hass_in_array
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '["one","two"]' do
         has "one"
         has "two"
@@ -260,7 +260,7 @@ class Seatbelt::AssertJsonNewDslTest < Test::Unit::TestCase
   end
 
   def test_not_enough_hass_in_hash_array
-    assert_raises(MiniTest::Assertion) do
+    assert_assertion_fails do
       assert_json '{"key":[{"key1":"value1"}, {"key2":"value2"}]}' do
         has 'key' do
           has 'key1', 'value1'
