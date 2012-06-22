@@ -21,4 +21,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'activesupport'
   gem.add_development_dependency 'actionmailer'
   gem.add_development_dependency 'travis-lint'
+  gem.add_development_dependency 'json'
+  # gem.add_development_dependency 'ruby-debug'
 end
