@@ -24,7 +24,14 @@ module Seatbelt
     def got_mail?(mail, options={})
       return false if options[:to]      && !mail.to.include?(options[:to])
       return false if options[:from]    && !mail.from.include?(options[:from])
-      return false if options[:subject] && (mail.subject !~ /#{options[:subject]}/)
+
+      case options[:subject]
+      when String
+        return false if mail.subject != options[:subject]
+      when Regexp
+        return false if mail.subject !~ /#{options[:subject]}/
+      end
+
       return false if options[:cc]      && !mail.cc.include?(options[:cc])
       return false if options[:bcc]     && !mail.bcc.include?(options[:bcc])
       if options[:body]

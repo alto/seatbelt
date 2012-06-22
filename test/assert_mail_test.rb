@@ -10,12 +10,12 @@ class Seatbelt::AssertMailTest < Test::Unit::TestCase
     assert_mail :bcc => 'bcc@seatbelt.co.nz'
     assert_mail :from => 'from@seatbelt.co.nz'
     assert_mail :subject => 'mail subject'
-    assert_mail :subject => 'subject' # uses regular expressions
+    assert_mail :subject => /subject/
     assert_mail :body => 'mail body text'
-    assert_mail :body => 'body text' # uses regular expressions
+    assert_mail :body => /body text/
     assert_mail :body => ['mail body', 'body text']
 
-    assert_mail :to => 'test@seatbelt.co.nz', :subject => 'subject', :body => 'body'
+    assert_mail :to => 'test@seatbelt.co.nz', :subject => /subject/, :body => 'body'
   end
   def test_assert_mail_crosscheck
     Mailer.test.deliver
@@ -38,7 +38,7 @@ class Seatbelt::AssertMailTest < Test::Unit::TestCase
   end
 
   def test_assert_mail_with_block
-    assert_mail :to => 'test@seatbelt.co.nz', :subject => 'subject', :body => 'body' do
+    assert_mail :to => 'test@seatbelt.co.nz', :subject => /subject/, :body => 'body' do
       Mailer.test.deliver
     end
   end
