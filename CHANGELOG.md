@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.2
+
+  * added assert_content_type
+
 ## 0.1.1
 
   * assert_mail subject now support regular explicitly (not implicitly anymore)

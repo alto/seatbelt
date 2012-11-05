@@ -3,6 +3,7 @@ require 'test/unit'
 require 'active_support'
 require 'action_mailer'
 require 'json'
+require 'mocha'
 
 $:.push File.expand_path("../../lib", __FILE__)
 require File.dirname(__FILE__) + '/../lib/seatbelt.rb'
