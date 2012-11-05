@@ -22,27 +22,52 @@ module Seatbelt
     end
 
     def got_mail?(mail, options={})
-      return false if options[:to]      && !mail.to.include?(options[:to])
-      return false if options[:from]    && !mail.from.include?(options[:from])
+      return false if unexpected_recipient?(mail, options)
+      return false if unexpected_sender?(mail, options)
+      return false if unexpected_subject?(mail, options)
+      return false if unexpected_copy?(mail, options)
+      return false if unexpected_blind_copy?(mail, options)
+      return false if unexpected_body?(mail, options)
+      true
+    end
 
+    def unexpected_recipient?(mail, options)
+      options[:to] && !mail.to.include?(options[:to])
+    end
+
+    def unexpected_sender?(mail, options)
+      options[:from] && !mail.from.include?(options[:from])
+    end
+
+    def unexpected_subject?(mail, options)
       case options[:subject]
       when String
-        return false if mail.subject != options[:subject]
+        mail.subject != options[:subject]
       when Regexp
-        return false if mail.subject !~ /#{options[:subject]}/
+        mail.subject !~ /#{options[:subject]}/
+      else
+        false
       end
+    end
 
-      return false if options[:cc]      && !mail.cc.include?(options[:cc])
-      return false if options[:bcc]     && !mail.bcc.include?(options[:bcc])
+    def unexpected_copy?(mail, options)
+      options[:cc] && !mail.cc.include?(options[:cc])
+    end
+
+    def unexpected_blind_copy?(mail, options)
+      options[:bcc] && !mail.bcc.include?(options[:bcc])
+    end
+
+    def unexpected_body?(mail, options)
       if options[:body]
         Array(options[:body]).each do |element|
           if !mail.body.encoded.match(element)
             # puts "#{element} not found in body: #{mail.body.encoded}"
-            return false
+            return true
           end
         end
       end
-      true
+      false
     end
 
   end
