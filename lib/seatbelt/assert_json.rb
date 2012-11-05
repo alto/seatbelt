@@ -27,26 +27,14 @@ module Seatbelt
       def has(*args, &block)
         arg = args.shift
         token = @decoded_json.is_a?(Array) ? @decoded_json.shift : @decoded_json
+
         case token
         when Hash
-          raise_error("element #{arg} not found") unless token.keys.include?(arg)
-          if second_arg = args.shift
-            case second_arg
-            when Regexp
-              raise_error("element #{token[arg].inspect} does not match #{second_arg.inspect}") if second_arg !~ token[arg]
-            else
-              raise_error("element #{token[arg].inspect} does not match #{second_arg.inspect}") if second_arg != token[arg]
-            end
-          end
+          has_hash(token, arg, args)
         when Array
-          raise_error("element #{arg} not found") if token != arg
+          has_array(token, arg)
         when String
-          case arg
-          when Regexp
-            raise_error("element #{arg.inspect} not found") if token !~ arg
-          else
-            raise_error("element #{arg.inspect} not found") if token != arg
-          end
+          has_string(token, arg)
         when NilClass
           raise_error("no element left")
         else
@@ -77,15 +65,40 @@ module Seatbelt
       end
       alias not_element has_not
 
-      private
+    private
 
-        def raise_error(message)
-          if Object.const_defined?(:MiniTest)
-            raise MiniTest::Assertion.new(message)
+      def raise_error(message)
+        if Object.const_defined?(:MiniTest)
+          raise MiniTest::Assertion.new(message)
+        else
+          raise Test::Unit::AssertionFailedError.new(message)
+        end
+      end
+
+      def has_hash(token, arg, args)
+        raise_error("element #{arg} not found") unless token.keys.include?(arg)
+        if second_arg = args.shift
+          case second_arg
+          when Regexp
+            raise_error("element #{token[arg].inspect} does not match #{second_arg.inspect}") if second_arg !~ token[arg]
           else
-            raise Test::Unit::AssertionFailedError.new(message)
+            raise_error("element #{token[arg].inspect} does not match #{second_arg.inspect}") if second_arg != token[arg]
           end
         end
+      end
+
+      def has_array(token, arg)
+        raise_error("element #{arg} not found") if token != arg
+      end
+
+      def has_string(token, arg)
+        case arg
+        when Regexp
+          raise_error("element #{arg.inspect} not found") if token !~ arg
+        else
+          raise_error("element #{arg.inspect} not found") if token != arg
+        end
+      end
 
     end
   end
