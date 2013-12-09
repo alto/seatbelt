@@ -107,3 +107,8 @@ end
 class Test::Unit::TestCase
   include Seatbelt::AssertJson
 end
+if Object.const_defined?(:ActiveSupport)
+  class ActiveSupport::TestCase
+    include Seatbelt::AssertJson
+  end
+end

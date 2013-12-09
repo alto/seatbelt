@@ -52,3 +52,8 @@ if Object.const_defined?(:ActionController)
     include Seatbelt::AssertContentType
   end
 end
+if Object.const_defined?(:ActiveSupport)
+  class ActiveSupport::TestCase
+    include Seatbelt::AssertContentType
+  end
+end
