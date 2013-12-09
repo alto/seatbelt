@@ -77,3 +77,8 @@ if Object.const_defined?(:ActionMailer)
     include Seatbelt::AssertMail
   end
 end
+if Object.const_defined?(:ActiveSupport)
+  class ActiveSupport::TestCase
+    include Seatbelt::AssertMail
+  end
+end
