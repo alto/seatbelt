@@ -1,5 +1,5 @@
-require 'rubygems'
-require 'test/unit'
+require 'minitest/autorun'
+require 'turn/autorun'
 require 'active_support'
 require 'action_mailer'
 require 'json'
@@ -11,7 +11,10 @@ require File.dirname(__FILE__) + '/../lib/seatbelt.rb'
 # Requiring custom spec helpers
 Dir[File.dirname(__FILE__) + "/helpers/**/*.rb"].sort.each { |f| require File.expand_path(f) }
 
-class Test::Unit::TestCase
+
+Turn.config.format = :dot
+
+class Minitest::Unit::TestCase
   def assert_assertion_fails(&block)
     if Object.const_defined?(:MiniTest)
       assert_raises(MiniTest::Assertion, &block)

@@ -103,7 +103,3 @@ module Seatbelt
     end
   end
 end
-
-class Test::Unit::TestCase
-  include Seatbelt::AssertJson
-end

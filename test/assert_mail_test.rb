@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Seatbelt::AssertMailTest < Test::Unit::TestCase
+class Seatbelt::AssertMailTest < Minitest::Unit::TestCase
 
   def test_assert_mail
     Mailer.test.deliver

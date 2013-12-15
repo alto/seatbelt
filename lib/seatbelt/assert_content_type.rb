@@ -46,9 +46,3 @@ module Seatbelt
 
   end
 end
-
-if Object.const_defined?(:ActionController)
-  class Test::Unit::TestCase
-    include Seatbelt::AssertContentType
-  end
-end

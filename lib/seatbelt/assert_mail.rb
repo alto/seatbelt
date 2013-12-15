@@ -72,8 +72,3 @@ module Seatbelt
 
   end
 end
-if Object.const_defined?(:ActionMailer)
-  class Test::Unit::TestCase
-    include Seatbelt::AssertMail
-  end
-end

@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/test_helper')
 
-class Seatbelt::AssertJsonTest < Test::Unit::TestCase
+class Seatbelt::AssertJsonTest < Minitest::Unit::TestCase
   include Seatbelt::AssertJson
 
   # def test_string

@@ -3,6 +3,18 @@ require 'seatbelt/assert_json'
 require 'seatbelt/assert_mail'
 require 'seatbelt/assert_content_type'
 
-# module Seatbelt
-#   # Your code goes here...
-# end
+if defined?(Test)
+  class Test::Unit::TestCase
+    include Seatbelt::AssertContentType if defined?(ActionController)
+    include Seatbelt::AssertJson
+    include Seatbelt::AssertMail if defined?(ActionMailer)
+  end
+end
+
+if defined?(Minitest)
+  class Minitest::Unit::TestCase
+    include Seatbelt::AssertContentType if defined?(ActionController)
+    include Seatbelt::AssertJson
+    include Seatbelt::AssertMail if defined?(ActionMailer)
+  end
+end
