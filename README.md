@@ -1,4 +1,8 @@
-# Seatbelt [![Build Status](https://secure.travis-ci.org/alto/seatbelt.png)](http://travis-ci.org/alto/seatbelt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/alto/seatbelt)
+# Seatbelt
+
+[![Build Status](https://secure.travis-ci.org/alto/seatbelt.png)](http://travis-ci.org/alto/seatbelt)
+[![Code Climate](https://codeclimate.com/github/alto/seatbelt.png)](https://codeclimate.com/github/alto/seatbelt)
+[![Coverage Status](https://coveralls.io/repos/aasm/aasm/badge.png?branch=master)](https://coveralls.io/r/aasm/aasm)
 
 Seatbelt provides a number of custom, high-level assertions for Ruby and Ruby on Rails. The assertions work well with Ruby
 [1.8.7](http://ruby-doc.org/core-1.8.7/),
