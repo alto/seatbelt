@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.3.0 (not yet released)
+## 0.3.0
 
  * added support for Rails 4.1 and Minitest >= 5.x (thanks to [@clod81](https://github.com/clod81))
 
