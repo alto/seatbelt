@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'multi_json'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'minitest', '4.7.5'
+  gem.add_development_dependency 'minitest'
   gem.add_development_dependency 'turn'
   gem.add_development_dependency 'travis-lint'
   gem.add_development_dependency 'json'
