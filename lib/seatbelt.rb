@@ -12,9 +12,17 @@ if defined?(Test)
 end
 
 if defined?(Minitest)
-  class Minitest::Unit::TestCase
-    include Seatbelt::AssertContentType if defined?(ActionController)
-    include Seatbelt::AssertJson
-    include Seatbelt::AssertMail if defined?(ActionMailer)
+  if defined?(Minitest::Unit)
+    class Minitest::Unit::TestCase
+      include Seatbelt::AssertContentType if defined?(ActionController)
+      include Seatbelt::AssertJson
+      include Seatbelt::AssertMail if defined?(ActionMailer)
+    end
+  else # Minitest >= 5.x
+    class Minitest::Test
+      include Seatbelt::AssertContentType if defined?(ActionController)
+      include Seatbelt::AssertJson
+      include Seatbelt::AssertMail if defined?(ActionMailer)
+    end
   end
 end
