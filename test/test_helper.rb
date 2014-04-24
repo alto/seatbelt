@@ -14,7 +14,7 @@ Dir[File.dirname(__FILE__) + "/helpers/**/*.rb"].sort.each { |f| require File.ex
 
 # Turn.config.format = :dot
 
-class Minitest::Unit::TestCase
+class Minitest::Test
   def assert_assertion_fails(&block)
     if Object.const_defined?(:MiniTest)
       assert_raises(MiniTest::Assertion, &block)

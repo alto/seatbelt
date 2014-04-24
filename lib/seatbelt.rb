@@ -12,13 +12,13 @@ if defined?(Test)
 end
 
 if defined?(Minitest)
-  if defined?(Minitest::Unit)
+  if Minitest::Unit::VERSION[0].to_i < 5
     class Minitest::Unit::TestCase
       include Seatbelt::AssertContentType if defined?(ActionController)
       include Seatbelt::AssertJson
       include Seatbelt::AssertMail if defined?(ActionMailer)
     end
-  else # Minitest >= 5.x
+  else
     class Minitest::Test
       include Seatbelt::AssertContentType if defined?(ActionController)
       include Seatbelt::AssertJson

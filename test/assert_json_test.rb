@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Seatbelt::AssertJsonNewDslTest < Minitest::Unit::TestCase
+class Seatbelt::AssertJsonNewDslTest < Minitest::Test
   include Seatbelt::AssertJson
 
   # def test_string

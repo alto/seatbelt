@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Seatbelt::AssertContentTypeTest < Minitest::Unit::TestCase
+class Seatbelt::AssertContentTypeTest < Minitest::Test
   include Seatbelt::AssertContentType
 
   def test_assert_content_type_short
