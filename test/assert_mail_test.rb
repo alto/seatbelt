@@ -56,6 +56,8 @@ class Seatbelt::AssertMailTest < Minitest::Test
       abc = 1 + 1
     end
 
+    refute_mail { 3 }
+
     assert_no_mail :to => 'another@seatbelt.co.nz' do
       Mailer.test.deliver
     end

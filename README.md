@@ -92,7 +92,7 @@ class MyTest < Test::Unit::TestCase
   end
 
   def test_crosscheck
-    assert_no_mail do
+    refute_mail do
       this_should_not_send_an_email
     end
   end
