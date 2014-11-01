@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.4.0
+
+ * supporting `refute_mail` now as well (minitest style) (see [issue #4](https://github.com/alto/seatbelt/pull/4)), thanks to [@jch](https://github.com/jch)
+
 ## 0.3.1
 
  * bugfix for Rails 4.1 and Minitest 5.x support
