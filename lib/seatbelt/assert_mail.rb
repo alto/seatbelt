@@ -8,6 +8,7 @@ module Seatbelt
     def assert_no_mail(options={}, &block)
       assert find_email(options, &block).nil?, "didn't expect mail (#{options.inspect}) in #{ActionMailer::Base.deliveries.inspect}"
     end
+    alias_method :refute_mail, :assert_no_mail
 
   private
 
