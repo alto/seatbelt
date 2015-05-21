@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.0 (not yet released)
+
+ * drop support for Ruby version 1.8.7 and 1.9.2
+ * re-use assert_json code from the assert_json gem
+
 ## 0.4.0
 
  * supporting `refute_mail` now as well (minitest style) (see [issue #4](https://github.com/alto/seatbelt/pull/4)), thanks to [@jch](https://github.com/jch)
