@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/test_helper')
 
 class Seatbelt::AssertJsonTest < Minitest::Test
-  include Seatbelt::AssertJson
+  include AssertJson
 
   # def test_string
   #   assert_json '"key"' do |json|

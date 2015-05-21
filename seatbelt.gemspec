@@ -16,11 +16,10 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Seatbelt::VERSION
 
-  gem.add_dependency 'multi_json'
+  gem.add_dependency 'assert_json'
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'minitest'
-  # gem.add_development_dependency 'turn'
   gem.add_development_dependency 'travis-lint'
   gem.add_development_dependency 'json'
   gem.add_development_dependency 'mocha'

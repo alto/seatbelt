@@ -36,7 +36,7 @@ Test your [JSON](http://www.json.org/) strings
 
 ```ruby
 class MyActionTest < ActionController::TestCase
-  include Seatbelt::AssertJson
+  include AssertJson
 
   def test_my_action
     get :my_action, :format => 'json'

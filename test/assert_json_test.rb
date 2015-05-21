@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Seatbelt::AssertJsonNewDslTest < Minitest::Test
-  include Seatbelt::AssertJson
+  include AssertJson
 
   # def test_string
   #   assert_json '"key"' do
