@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-# require 'turn/autorun'
+require 'maxitest/autorun'
 require 'active_support'
 require 'action_mailer'
 require 'json'
