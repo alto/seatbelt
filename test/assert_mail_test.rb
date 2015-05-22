@@ -31,7 +31,7 @@ class Seatbelt::AssertMailTest < Minitest::Test
 
   def test_assert_mail_with_multiple_mails
     deliver
-    Mailer.test(:to => 'another@seatbelt.co.nz').deliver_now
+    deliver :to => 'another@seatbelt.co.nz'
 
     assert_mail :to => 'test@seatbelt.co.nz'
     assert_mail :to => 'another@seatbelt.co.nz'
@@ -79,8 +79,8 @@ class Seatbelt::AssertMailTest < Minitest::Test
 
   private
 
-  def deliver
-    ActionMailer::VERSION::MAJOR > 3 ? Mailer.test.deliver_now : Mailer.test.deliver
+  def deliver(*args)
+    ActionMailer::VERSION::MAJOR > 3 ? Mailer.test(*args).deliver_now : Mailer.test(*args).deliver
   end
 
 end
