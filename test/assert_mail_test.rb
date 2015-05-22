@@ -3,7 +3,7 @@ require 'test_helper'
 class Seatbelt::AssertMailTest < Minitest::Test
 
   def test_assert_mail
-    Mailer.test.deliver
+    Mailer.test.deliver_now
 
     assert_mail :to => 'test@seatbelt.co.nz'
     assert_mail :cc => 'cc@seatbelt.co.nz'
@@ -18,7 +18,7 @@ class Seatbelt::AssertMailTest < Minitest::Test
     assert_mail :to => 'test@seatbelt.co.nz', :subject => /subject/, :body => 'body'
   end
   def test_assert_mail_crosscheck
-    Mailer.test.deliver
+    Mailer.test.deliver_now
 
     assert_assertion_fails { assert_mail :to => 'unknown@seatbelt.co.nz' }
     assert_assertion_fails { assert_mail :cc => 'unknown@seatbelt.co.nz' }
@@ -30,8 +30,8 @@ class Seatbelt::AssertMailTest < Minitest::Test
   end
 
   def test_assert_mail_with_multiple_mails
-    Mailer.test.deliver
-    Mailer.test(:to => 'another@seatbelt.co.nz').deliver
+    Mailer.test.deliver_now
+    Mailer.test(:to => 'another@seatbelt.co.nz').deliver_now
 
     assert_mail :to => 'test@seatbelt.co.nz'
     assert_mail :to => 'another@seatbelt.co.nz'
@@ -39,13 +39,13 @@ class Seatbelt::AssertMailTest < Minitest::Test
 
   def test_assert_mail_with_block
     assert_mail :to => 'test@seatbelt.co.nz', :subject => /subject/, :body => 'body' do
-      Mailer.test.deliver
+      Mailer.test.deliver_now
     end
   end
   def test_assert_mail_with_block_crosscheck
     assert_assertion_fails do
       assert_mail :to => 'unknown@seatbelt.co.nz' do
-        Mailer.test.deliver
+        Mailer.test.deliver_now
       end
     end
   end
@@ -59,20 +59,20 @@ class Seatbelt::AssertMailTest < Minitest::Test
     refute_mail { 3 }
 
     assert_no_mail :to => 'another@seatbelt.co.nz' do
-      Mailer.test.deliver
+      Mailer.test.deliver_now
     end
     assert_no_mail :subject => 'my other subject' do
-      Mailer.test.deliver
+      Mailer.test.deliver_now
     end
     assert_no_mail :body => 'my other body text' do
-      Mailer.test.deliver
+      Mailer.test.deliver_now
     end
   end
 
   def test_assert_no_mail_crosscheck
     assert_assertion_fails do
       assert_no_mail :to => 'test@seatbelt.co.nz' do
-        Mailer.test.deliver
+        Mailer.test.deliver_now
       end
     end
   end
