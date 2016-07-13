@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 1.0.0 (not yet released)
+## 0.5.0
 
  * fix issue with encoding for latest _mail_ gem version (`2.6.4`)
  * drop support for Ruby version 1.8.7 and 1.9.2
