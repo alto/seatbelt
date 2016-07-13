@@ -62,8 +62,8 @@ module Seatbelt
     def unexpected_body?(mail, options)
       if options[:body]
         Array(options[:body]).each do |element|
-          if !mail.body.encoded.match(element)
-            # puts "#{element} not found in body: #{mail.body.encoded}"
+          if !mail.body.match(element)
+            # puts "#{element} not found in body: #{mail.body}"
             return true
           end
         end
