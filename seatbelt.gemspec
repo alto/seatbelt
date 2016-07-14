@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["boettger@mt7.de"]
   gem.summary       = %q{Provide custom assertions for Ruby and Ruby on Rails}
   gem.description   = %q{Goal is to provide custom, high quality and high level assertions for Ruby and Ruby on Rails}
-  gem.homepage      = "http://github.com/alto/seatbelt"
+  gem.homepage      = "https://github.com/alto/seatbelt"
   gem.licenses      = ["MIT"]
 
   gem.files         = `git ls-files`.split($\)
