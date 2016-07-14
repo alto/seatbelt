@@ -4,10 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/alto/seatbelt/badges/gpa.svg)](https://codeclimate.com/github/alto/seatbelt)
 
 Seatbelt provides a number of custom, high-level assertions for Ruby and Ruby on Rails. The assertions work well with Ruby
-[1.9.3](http://ruby-doc.org/core-1.9.3/),
-[2.0.0](http://ruby-doc.org/core-2.0.0/),
-[2.0.0](http://ruby-doc.org/core-2.1.0/) and
-[2.1.0](http://ruby-doc.org/core-2.2.0/).
+[1.9.3](http://ruby-doc.org/core-1.9.3/) and
+[2.2.3](http://ruby-doc.org/core-2.2.3/).
 
 ## Installation
 
