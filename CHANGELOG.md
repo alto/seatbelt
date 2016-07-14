@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.0
+
+ * support Rails `5.0`
+ * cancel support for Ruby < `2.2`
+
 ## 0.5.0
 
  * fix issue with encoding for latest _mail_ gem version (`2.6.4`)
