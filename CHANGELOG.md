@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.0.0
+
+ * **breaking change**: drop support for test-unit and older versions of minitest
+ * support Rails `>= 6.0`
+
 ## 1.0.0
 
  * support Rails `5.0`
