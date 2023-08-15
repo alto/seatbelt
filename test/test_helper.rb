@@ -2,7 +2,7 @@ require 'maxitest/autorun'
 require 'active_support'
 require 'action_mailer'
 require 'json'
-require 'mocha/setup'
+require 'mocha/minitest'
 
 $:.push File.expand_path("../../lib", __FILE__)
 require File.dirname(__FILE__) + '/../lib/seatbelt.rb'
@@ -15,10 +15,6 @@ Dir[File.dirname(__FILE__) + "/helpers/**/*.rb"].sort.each { |f| require File.ex
 
 class Minitest::Test
   def assert_assertion_fails(&block)
-    if Object.const_defined?(:MiniTest)
-      assert_raises(MiniTest::Assertion, &block)
-    else
-      assert_raises(Test::Unit::AssertionFailedError, &block)
-    end
+    assert_raises(::Minitest::Assertion, &block)
   end
 end

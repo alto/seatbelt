@@ -7,7 +7,7 @@ class Mailer < ActionMailer::Base
           :cc       => 'cc@seatbelt.co.nz',
           :bcc      => 'bcc@seatbelt.co.nz',
           :subject  => 'mail subject'}.merge(options)) do |format|
-      format.text { render :text => options[:body] || 'mail body text' }
+      format.text { render :plain => options[:body] || 'mail body text' }
     end
   end
 
